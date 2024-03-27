@@ -30,3 +30,6 @@ class Database:
             (produto["nome"], produto["empresa"], produto["descricao"], produto["quantidade"], produto["marca"], produto["valor"]))
         self.conn.commit()
         self.conn.close()
+
+    def consulta_produtos_por_nome(self, nome):
+        return self.query("SELECT * FROM produtos WHERE nome = ?", (nome,)).fetchall()
