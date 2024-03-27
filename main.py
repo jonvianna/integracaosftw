@@ -2,6 +2,7 @@ from flask import Flask, make_response, jsonify, request
 from banquinho import Database
 
 app = Flask(__name__)
+app.config['JSON_SORT_KEYS'] = False
 
 @app.route("/produtos", methods=['GET'])
 def get_produtos():
