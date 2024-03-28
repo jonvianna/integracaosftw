@@ -1,4 +1,4 @@
-#iniciar no shell a criação do conteiner
+#iniciar no shell a criação do container
 #sudo docker build -t quarta-integracoes .
 
 
@@ -15,6 +15,6 @@ RUN pip install flask
 
 
 # RODAR O CONTAINER E INDICAR QUAL PORTA DE DENTRO QUE ELE VAI TRANSMITIR PRA FORA
-# sudo docker run -p 5000:5000 -it quarta-integracoes
+# sudo docker run -p 5000:5000 -it [NOME_CONTAINER]
 
 CMD ["make", "dev"]
