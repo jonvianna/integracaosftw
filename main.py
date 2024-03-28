@@ -74,6 +74,34 @@ def get_produtos_por_nome():
     return make_response(jsonify(produtos_formatados))
 
 
+@app.route('/produtos/<int:id>', methods=['PUT'])
+def update_produto(id):
+    produto_atualizado = request.get_json()
+    db = Database()
+    try:
+        db.update_produto(id, produto_atualizado)
+        return make_response(
+            jsonify(
+                mensagem="Produto atualizado com sucesso"
+            ), 200
+        )
+    except Exception as e:
+        return make_response(
+            jsonify(
+                mensagem="Erro ao atualizar produto: " + str(e)
+            ), 500
+        )
+
+@app.route('/produtos/<int:id>', methods=['DELETE'])
+def delete_produto(id):
+    db = Database()
+    db.delete_produto(id)
+
+    return make_response(
+        jsonify(
+            mensagem="Produto excluído com sucesso"
+        )
+    )
 
 
 app.run(debug=True, host="0.0.0.0")
